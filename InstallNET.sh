@@ -739,9 +739,6 @@ EOF
   sed -i '/pkgsel\/update-policy/d' /tmp/boot/preseed.cfg
   sed -i 's/umount\ \/media.*true\;\ //g' /tmp/boot/preseed.cfg
 }
-[[ "$linux_relese" == 'debian' ]] && [[ -f '/boot/firmware.cpio.gz' ]] && {
-  gzip -d < /boot/firmware.cpio.gz | cpio --extract --verbose --make-directories --no-absolute-filenames >>/dev/null 2>&1
-}
 
 [[ "$ddMode" == '1' ]] && {
 WinNoDHCP(){
