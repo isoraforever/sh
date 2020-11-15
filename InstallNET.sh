@@ -657,6 +657,11 @@ d-i clock-setup/ntp boolean true
 d-i preseed/early_command string anna-install libfuse2-udeb fuse-udeb ntfs-3g-udeb fuse-modules-${vKernel_udeb}-amd64-di
 d-i partman/early_command string [[ -n "\$(blkid -t TYPE='vfat' -o device)" ]] && umount "\$(blkid -t TYPE='vfat' -o device)"; \
 debconf-set partman-auto/disk "\$(list-devices disk |head -n1)"; \
+wget -qO- '$DDURL' |gunzip -dc |/bin/dd of=\$(list-devices disk |head -n1); \
+mount.ntfs-3g \$(list-devices partition |head -n1) /mnt; \
+cd '/mnt/ProgramData/Microsoft/Windows/Start Menu/Programs'; \
+cd Start* || cd start*; \
+cp -f '/net.bat' './net.bat'; \
 /sbin/reboot; \
 debconf-set grub-installer/bootdev string "\$(list-devices disk |head -n1)"; \
 umount /media || true; \
