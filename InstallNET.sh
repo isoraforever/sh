@@ -211,7 +211,7 @@ clear && echo -e "\n\033[36m# Check Dependence\033[0m\n"
 if [[ "$ddMode" == '1' ]]; then
   CheckDependence iconv;
   linux_relese='debian';
-  tmpDIST='jessie';
+  tmpDIST='buster';
   tmpVER='amd64';
   tmpINS='auto';
 fi
@@ -248,7 +248,7 @@ fi
 [ -z "$VER" ] && VER='amd64'
 
 if [[ -z "$tmpDIST" ]]; then
-  [ "$Relese" == 'Debian' ] && tmpDIST='jessie' && DIST='jessie';
+  [ "$Relese" == 'Debian' ] && tmpDIST='buster' && DIST='buster';
   [ "$Relese" == 'Ubuntu' ] && tmpDIST='bionic' && DIST='bionic';
   [ "$Relese" == 'CentOS' ] && tmpDIST='6.10' && DIST='6.10';
 fi
