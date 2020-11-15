@@ -325,18 +325,6 @@ if [[ "$SpikCheckDIST" == '0' ]]; then
   }
 fi
 
-[[ "$ddMode" == '1' ]] && {
-  export SSL_SUPPORT='https://github.com/MoeClub/MoeClub.github.io/raw/master/lib/wget_udeb_amd64.tar.gz';
-  if [[ -n "$tmpURL" ]]; then
-    DDURL="$tmpURL"
-    echo "$DDURL" |grep -q '^http://\|^ftp://\|^https://';
-    [[ $? -ne '0' ]] && echo 'Please input vaild URL,Only support http://, ftp:// and https:// !' && exit 1;
-    [[ -n "$tmpSSL" ]] && SSL_SUPPORT="$tmpSSL";
-  else
-    echo 'Please input vaild image URL! ';
-    exit 1;
-  fi
-}
 
 [[ -n "$tmpINS" ]] && {
   [[ "$tmpINS" == 'auto' ]] && inVNC='n';
