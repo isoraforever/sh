@@ -32,7 +32,7 @@ while [[ $# -ge 1 ]]; do
       shift
       ;;
     *)
-      echo -ne " Usage:\n\tbash $0\t-d/--debian [7/\033[33m\033[04mwheezy\033[0m|8/jessie|9/stretch]\n\t\t\t\t-v/--ver [32/\033[33m\033[04mi386\033[0m|64/amd64]\n\t\t\t\t-apt/--mirror\n\t\t\t\t-a/--auto\n\t\t\t\t-m/--manual\n"
+      echo -ne " Usage:\n\tbash $0\t-d/--debian [7/\033[33m\033[04mwheezy\033[0m|8/jessie|9/stretch|10/buster]\n\t\t\t\t-v/--ver [32/\033[33m\033[04mi386\033[0m|64/amd64]\n\t\t\t\t-apt/--mirror\n\t\t\t\t-a/--auto\n\t\t\t\t-m/--manual\n"
       exit 1;
       ;;
     esac
@@ -48,6 +48,7 @@ while [[ $# -ge 1 ]]; do
 [ "$vDEBtmp" == '7' -o "$vDEBtmp" == 'wheezy' ] && linuxdists='debian' && vDEB='wheezy';
 [ "$vDEBtmp" == '8' -o "$vDEBtmp" == 'jessie' ] && linuxdists='debian' && vDEB='jessie';
 [ "$vDEBtmp" == '9' -o "$vDEBtmp" == 'stretch' ] && linuxdists='debian' && vDEB='stretch';
+[ "$vDEBtmp" == '10' -o "$vDEBtmp" == 'buster' ] && linuxdists='debian' && vDEB='buster';
 [ "$vDEBtmp" == 'precise' ] && linuxdists='ubuntu' && vDEB='precise';
 [ "$vDEBtmp" == 'trusty' ] && linuxdists='ubuntu' && vDEB='trusty';
 [ "$vDEBtmp" == 'wily' ] && linuxdists='ubuntu' && vDEB='wily';
@@ -70,7 +71,7 @@ DebianMirror="$(echo -n "$tmpDebianMirror" |awk -F'://' '{print $2}')"
 DebianMirror="$(echo -n "$tmpDebianMirror")"
 }
 } || {
-[[ $linuxdists == 'debian' ]] && DebianMirror='httpredir.debian.org'
+[[ $linuxdists == 'debian' ]] && DebianMirror='deb.debian.org'
 [[ $linuxdists == 'ubuntu' ]] && DebianMirror='archive.ubuntu.com'
 }
 [ -z $DebianMirrorDirectory ] && [ -n $DebianMirror ] && [ -n $tmpMirror ] && {
