@@ -280,7 +280,6 @@ d-i mirror/http/hostname string $DebianMirror
 d-i mirror/http/directory string $DebianMirrorDirectory
 d-i mirror/http/proxy string 
 
-d-i apt-setup/services-select multiselect
 d-i passwd/root-login boolean ture
 d-i passwd/make-user boolean false
 d-i passwd/root-password password $myPASSWORD
