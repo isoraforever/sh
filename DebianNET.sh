@@ -71,7 +71,7 @@ DebianMirror="$(echo -n "$tmpDebianMirror" |awk -F'://' '{print $2}')"
 DebianMirror="$(echo -n "$tmpDebianMirror")"
 }
 } || {
-[[ $linuxdists == 'debian' ]] && DebianMirror='deb.debian.org'
+[[ $linuxdists == 'debian' ]] && DebianMirror='ftp.debian.org'
 [[ $linuxdists == 'ubuntu' ]] && DebianMirror='archive.ubuntu.com'
 }
 [ -z $DebianMirrorDirectory ] && [ -n $DebianMirror ] && [ -n $tmpMirror ] && {
@@ -94,7 +94,7 @@ DebianMirrorDirectory="$(echo -n "$tmpMirror" |awk -F''${DebianMirror}'' '{print
 
 [ -z $vDEB ] && vDEB='wheezy';
 [ -z $VER ] && VER='i386';
-[ -z $myPASSWORD ] && myPASSWORD='Vicer'
+[ -z $myPASSWORD ] && myPASSWORD='Qaz-xdr'
 
 clear && echo -e "\n\033[36m# Install\033[0m\n"
 
@@ -278,8 +278,9 @@ d-i netcfg/confirm_static boolean true
 d-i mirror/country string manual
 d-i mirror/http/hostname string $DebianMirror
 d-i mirror/http/directory string $DebianMirrorDirectory
-d-i mirror/http/proxy string
+d-i mirror/http/proxy string 
 
+d-i apt-setup/services-select multiselect
 d-i passwd/root-login boolean ture
 d-i passwd/make-user boolean false
 d-i passwd/root-password password $myPASSWORD
