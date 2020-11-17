@@ -71,7 +71,7 @@ DebianMirror="$(echo -n "$tmpDebianMirror" |awk -F'://' '{print $2}')"
 DebianMirror="$(echo -n "$tmpDebianMirror")"
 }
 } || {
-[[ $linuxdists == 'debian' ]] && DebianMirror='ftp.debian.org'
+[[ $linuxdists == 'debian' ]] && DebianMirror='deb.debian.org'
 [[ $linuxdists == 'ubuntu' ]] && DebianMirror='archive.ubuntu.com'
 }
 [ -z $DebianMirrorDirectory ] && [ -n $DebianMirror ] && [ -n $tmpMirror ] && {
